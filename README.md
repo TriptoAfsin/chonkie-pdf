@@ -1,6 +1,14 @@
+<div align="center">
+  <img src="chonkie-pdf.png" alt="Chonkie PDF" width="256" height="256">
+</div>
+
 # Chonkie PDF
 
 A powerful Python cli tool for splitting large PDF files into smaller chunks with advanced compression capabilities to handle problematic PDFs where individual pages retain the size of the entire document.
+
+<div align="center">
+  <img src="cli.png" alt="CLI Screenshot">
+</div>
 
 ## 🚀 Features
 
