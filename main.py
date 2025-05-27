@@ -9,7 +9,7 @@ from pathlib import Path
 
 # Import our custom modules
 from utils.dependencies import print_dependency_status
-from utils.file_utils import find_pdf_files, setup_directories, get_file_size_kb
+from utils.file_utils import find_pdf_files, setup_directories, get_file_size_kb, display_directory_warnings_and_instructions
 from utils.encryption import is_pdf_encrypted, handle_encrypted_pdf, check_encryption_support
 from utils.chunker import chunk_pdf_by_pages
 from utils.reporter import generate_report
@@ -101,24 +101,22 @@ def main():
     # Show available compression libraries
     print_dependency_status()
     
+    # Check directory status and show warnings if needed
+    print("\n🔍 Checking setup...")
+    if not display_directory_warnings_and_instructions():
+        print("\n❌ Cannot proceed without proper setup. Please follow the instructions above.")
+        return
+    
     # Get user preferences
     max_size_kb = get_chunk_size()
     compress_chunks, compression_quality = get_compression_settings()
     
-    # Setup directories
-    try:
-        files_dir, chunks_dir = setup_directories()
-        print(f"📁 Chunks will be saved in: {chunks_dir}")
-    except FileNotFoundError as e:
-        print(f"❌ Error: {e}")
-        return
+    # Setup directories (this will now always succeed since we checked above)
+    files_dir, chunks_dir = setup_directories()
+    print(f"📁 Chunks will be saved in: {chunks_dir}")
     
-    # Find all PDF files
+    # Find all PDF files (we know they exist from the check above)
     pdf_files = find_pdf_files(files_dir)
-    
-    if not pdf_files:
-        print(f"❌ No PDF files found in '{files_dir}' directory!")
-        return
     
     print(f"\n🔍 Found {len(pdf_files)} PDF files to process")
     print(f"📊 Maximum chunk size: {max_size_kb} KB")

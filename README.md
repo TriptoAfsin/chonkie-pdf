@@ -40,15 +40,38 @@ pip install -r requirements.txt
 
 ## 🎯 Usage
 
-1. **Place your PDF files** in the `files/` directory
-2. **Run the tool**:
+1. **Run the tool**:
    ```bash
    python main.py
    ```
-3. **Follow the prompts**:
+   
+2. **Follow the setup instructions** (if needed):
+   - The app will automatically check if the `files/` directory exists
+   - If not found, it will show clear instructions to create it
+   - If empty, it will remind you to add PDF files
+
+3. **Place your PDF files** in the `files/` directory when prompted
+
+4. **Configure settings**:
    - Enter maximum chunk size (e.g., 1024 KB)
    - Choose whether to enable compression (Y/n)
    - Set image compression quality (1-100, default 60)
+
+### First Time Setup
+The application will guide you through setup automatically:
+
+```
+🔍 Checking setup...
+⚠️  WARNING: 'files' directory not found!
+📋 SETUP INSTRUCTIONS:
+   1. Create a 'files' directory in the current folder
+   2. Place your PDF files inside the 'files' directory
+   3. Run the application again
+
+💡 Quick setup commands:
+   mkdir files
+   # Then copy your PDF files to the files folder
+```
 
 ## 📁 Directory Structure
 
