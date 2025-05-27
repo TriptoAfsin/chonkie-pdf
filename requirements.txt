@@ -1,0 +1,12 @@
+# Core PDF processing
+PyPDF2>=3.0.0
+
+# Advanced PDF compression libraries (optional but recommended)
+pikepdf>=8.0.0
+pypdf>=4.0.0
+
+# Image processing for compression (required by pikepdf for image compression)
+Pillow>=9.0.0 
+
+# Encryption libraries
+pycryptodome
